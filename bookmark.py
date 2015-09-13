@@ -54,12 +54,16 @@ def calcHash(list):
   # http://stackoverflow.com/a/5419072
   return hashlib.md5(bencode.bencode(list)).hexdigest()
 
-def generateHash(folder):
+def gatherUrlOrHash(folder):
   folders = filter(isFolder, getChildren(folder))
   folders_hash = map(generateHash, folders)
   bookmarks = filter(isBookmark, getChildren(folder))
   bookmarks_url = map(getUrl, bookmarks)
   bookmarks_url.extend(folders_hash)
+  return bookmarks_url
+
+def generateHash(folder):
+  bookmarks_url = gatherUrlOrHash(folder)
   return calcHash(bookmarks_url)
 
 def hash_or_url(item):
