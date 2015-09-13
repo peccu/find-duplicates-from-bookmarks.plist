@@ -13,14 +13,8 @@ def dup_map(item):
 def find_duplicates(needle, list):
   # listからneedle(フォルダ)の子供と同じ子供をもつフォルダを集める
   path = needle['path']
-#   print "path: " + path
-#   pp.pprint(needle)
   filtered = filter(dup_filter(needle['children']), list)
-#   print "filtered"
-#   pp.pprint(filtered)
   dup = map(dup_map, filtered)
-#   print "mapped"
-#   pp.pprint(dup)
   return {'path': path, 'dup': dup}
 #   return [
 #     {
@@ -36,19 +30,9 @@ def find_duplicates(needle, list):
 def collect_duplicates(list, all):
   # allからlistの先頭要素と重複する物を探し，それとlistの残りの重複を探した物をつなげて返す
   first = list.pop(0)
-#   print 'first'
-#   pp.pprint(first)
   found = [find_duplicates(first, all)]
-#   print 'found'
-#   pp.pprint(found)
   if list == []:
-#     print 'list is null'
     return found
-#   print 'list is not null'
   collected = collect_duplicates(list, all)
-#   print 'collected'
-#   pp.pprint(collected)
   found.extend(collected)
-#   print 'collect and extended'
-#   pp.pprint(found)
   return found

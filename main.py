@@ -14,12 +14,8 @@ def main():
   bookmarks = bookmark.loadBookmarks(True)
   print 'collecting bookmarks'
   folders = collectFolder.collect(bookmarks)
-#   pp.pprint(folders)
   print 'find duplication'
   duplicates = findDuplicator.collect_duplicates(folders, list(folders))
-  print 'duplicated'
-#   pp.pprint(duplicates)
-  print 'found duplication'
   print
   selectDuplicates.select_duplicate(duplicates)
 
