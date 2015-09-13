@@ -16,23 +16,17 @@ def find_duplicates(needle, list):
   filtered = filter(dup_filter(needle['children']), list)
   dup = map(dup_map, filtered)
   return {'path': path, 'dup': dup}
-#   return [
-#     {
-#       'path': '/fol/hoge/fuga',
-#       'dups': [
-#         'https://google.com/',
-#         'https://google.co.jp/',
-#         'https://google.com/?q=some+keywords'
-#       ]
-#     }
-#   ]
 
 def collect_duplicates(list, all):
-  # allからlistの先頭要素と重複する物を探し，それとlistの残りの重複を探した物をつなげて返す
+  # allからlistの先頭要素と重複する物を探し
+  # それとlistの残りの重複を探した物をつなげて返す
   first = list.pop(0)
+  # 先頭要素と重複する物を取得する
   found = [find_duplicates(first, all)]
   if list == []:
+    # 重複なし
     return found
+  # 残りの要素も重複を探す
   collected = collect_duplicates(list, all)
   found.extend(collected)
   return found
