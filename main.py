@@ -4,16 +4,16 @@ import sys
 import codecs
 sys.stdout = codecs.getwriter('utf_8')(sys.stdout)
 
-import bookmark
-import collectFolder
+import Bookmark
+import Folder
 import findDuplicator
 import selectDuplicates
 
 def main():
   print 'loading bookmarks'
-  bookmarks = bookmark.loadBookmarks(True)
+  bookmarks = Bookmark.loadBookmarks()
   print 'collecting bookmarks'
-  folders = collectFolder.collect(bookmarks)
+  folders = Folder.collect(bookmarks)
   print 'find duplication'
   duplicates = findDuplicator.collect_duplicates(folders, list(folders))
   print
