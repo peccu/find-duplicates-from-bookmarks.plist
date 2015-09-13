@@ -11,8 +11,12 @@ def dup_filter(children):
 def find_duplicates(needle, list):
   # listからneedle(フォルダ)の子供と同じ子供をもつフォルダを集める
   path = needle['path']
-  filtered = filter(dup_filter(needle['children']), list)
-  dup = map(dup_map, filtered)
+  # 子供と一致するかを判断するフィルタを作る
+  child_filter = dup_filter(needle['children'])
+  # 一覧から一致する物だけを集める
+  filtered = filter(child_filter, list)
+  # pathだけをdupに格納する
+  dup = map(Folder.getPath, filtered)
   return {'path': path, 'dup': dup}
 
 def collect_duplicates(list, all):
