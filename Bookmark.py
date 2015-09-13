@@ -14,7 +14,7 @@ def loadBookmarks(dummy = False):
   if(dummy):
     import dummy
     return dummy.bookmarks
-  bookmarkFile = self.getBookmarkFilePath()
+  bookmarkFile = getBookmarkFilePath()
   return biplist.readPlist(bookmarkFile)
 
 def getTitle(item):
