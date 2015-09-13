@@ -20,6 +20,7 @@ def find_duplicates(needle, list):
   return {'path': path, 'dup': dup}
 
 def collect_duplicates(list, all):
+  # 各フォルダに対し，重複するフォルダを集める
   def find_duplicate(item):
     return find_duplicates(item, all)
   found = map(find_duplicate, list)
