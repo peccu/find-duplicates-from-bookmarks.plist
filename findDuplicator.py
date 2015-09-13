@@ -1,14 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import Folder
+
 def dup_filter(children):
   # childrenと同じ物だけを集めるフィルタ
   def filter(item):
     return set(item['children']) == set(children)
   return filter
-
-def dup_map(item):
-  # pathだけを集めるmapper
-  return item['path']
 
 def find_duplicates(needle, list):
   # listからneedle(フォルダ)の子供と同じ子供をもつフォルダを集める
