@@ -5,12 +5,22 @@ import pprint
 pp = pprint.PrettyPrinter(indent=2)
 import Bookmark
 
+def getDepth(item):
+  if 'depth' in item:
+    return item['depth']
+  return ''
+
 def getPath(item):
   if 'path' in item:
     return item['path']
   return ''
 
-def collect_list(parentPath, current):
+def getChildren(item):
+  if 'children' in item:
+    return item['children']
+  return ''
+
+def collect_list(parent, current):
   # このフォルダのパスと子供一覧をリストに追加
   children = Bookmark.gatherUrlOrHash(current)
   folder = {
