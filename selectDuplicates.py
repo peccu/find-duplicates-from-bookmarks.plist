@@ -4,7 +4,7 @@ import Folder
 
 def select_each(item):
   def select_print(path):
-    print str(len(Folder.getPath(item))) + ': folder:' + Folder.getPath(item) + ' => ' + path
+    print str(Folder.getDepth(item)) + ': folder:' + Folder.getPath(item) + ' => ' + path
   map(select_print, item['dup'])
 
 def select_duplicate(list):
