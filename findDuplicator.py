@@ -12,7 +12,7 @@ def find_duplicates(needle, list):
   # listからneedle(フォルダ)の子供と同じ子供をもつフォルダを集める
   path = needle['path']
   # 子供と一致するかを判断するフィルタを作る
-  child_filter = dup_filter(needle['children'])
+  child_filter = dup_filter(Folder.getChildren(needle))
   # 一覧から一致する物だけを集める
   filtered = filter(child_filter, list)
   # pathだけをdupに格納する
