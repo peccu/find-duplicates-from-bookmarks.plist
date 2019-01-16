@@ -8,9 +8,10 @@ def select_each(item):
     if item['path'] == path:
       return
     if (len(item['path']) < len(path)) or (len(item['path']) == len(path) and item['path'] < path):
-      print str(len(item['path'])) + ': folder:' + item['path'] + ' => ' + path
+      print str(Folder.getDepth(item)) + ': ' + str(len(item['path'])) + ': folder:' + item['path'] + ' => ' + path
     else:
-      print str(len(path)) + ': folder:' + path + ' => ' + item['path']
+      # print str(len(path)) + ': folder:' + path + ' => ' + item['path']
+      return
   map(select_print, item['dup'])
 
 def select_duplicate(list):
