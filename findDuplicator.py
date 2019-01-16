@@ -4,9 +4,9 @@ import Folder
 
 def dup_filter(children):
   # childrenと同じ物だけを集めるフィルタ
-  def filter(item):
+  def _filter(item):
     return set(item['children']) == set(children)
-  return filter
+  return _filter
 
 def find_duplicates(needle, list):
   # listからneedle(フォルダ)の子供と同じ子供をもつフォルダを集める
