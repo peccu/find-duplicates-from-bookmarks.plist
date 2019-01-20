@@ -8,7 +8,7 @@ def select_each(item):
     if item['path'] == path:
       return
     if (len(item['path']) < len(path)) or (len(item['path']) == len(path) and item['path'] < path):
-      print str(Folder.getDepth(item)) + ': ' + str(len(item['path'])) + ': folder:' + item['path'] + ' => ' + path
+      print str(Folder.getDepth(item)) + ':' + path.split('/')[-2:-1][0] + ':' + str(len(item['path'])) + ': folder:' + item['path'] + ' => ' + path
     else:
       # print str(len(path)) + ': folder:' + path + ' => ' + item['path']
       return
